@@ -274,7 +274,7 @@
           last_name: formData.get("last_name"),
           age: parseInt(formData.get("age")),
           gender: formData.get("gender"),
-          user_id: 2, // You can modify this to dynamically generate user_id if needed
+          user_id: `${formData.get("first_name")}_${formData.get("last_name")}`, 
           total_income: parseInt(formData.get("total_income")),
           expense: {
             utilities: formData.get("utilities")
@@ -294,7 +294,7 @@
               : 0,
           },
         };
-        console.log(data)
+  
         try {
           const response = await fetch(
             "https://survey-expense-application.onrender.com/api/user",
