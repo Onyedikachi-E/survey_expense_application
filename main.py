@@ -52,6 +52,7 @@ def create_user():
         user_repo = User(user_collection=user_collection)
         
         # Create the user with the provided data
+        print(user_collection)
         user_repo.create_user_data(user_data=user_data)
         return jsonify(message="User created successfully"), HTTPStatus.CREATED
     
