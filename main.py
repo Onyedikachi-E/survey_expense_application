@@ -124,4 +124,5 @@ def delete_user(user_id):
 
 
 if __name__ == '__main__':
+    user_collection = user_collection
     app.run(host="0.0.0.0", port=8001, debug=True)
