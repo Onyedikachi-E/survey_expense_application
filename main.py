@@ -26,6 +26,7 @@ def create_user():
     try:
         # Extract user_data from the request JSON body
         user_data = request.get_json()
+        print(user_data) 
         
         if not user_data:
             return jsonify({"message": "User information was not supplied"}), HTTPStatus.BAD_REQUEST
