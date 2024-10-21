@@ -26,7 +26,7 @@ def create_user():
     try:
         # Extract user_data from the request JSON body
         user_data = request.get_json()
-        print(user_data) 
+        # print(user_data)
         
         if not user_data:
             return jsonify({"message": "User information was not supplied"}), HTTPStatus.BAD_REQUEST
@@ -125,5 +125,4 @@ def delete_user(user_id):
 
 
 if __name__ == '__main__':
-    user_collection = user_collection
     app.run(host="0.0.0.0", port=8001, debug=True)
