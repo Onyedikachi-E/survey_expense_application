@@ -17,7 +17,9 @@ class User():
         try:
 
             # Create a document for the user
+            print(user_data)
             new_user = self.user_collection.insert_one(document=user_data)
+            print("We are good")
             return new_user
 
         except Exception as err:
