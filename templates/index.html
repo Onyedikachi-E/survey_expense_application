@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Tool</title>
+    <!-- link to css static folder when deployed for use -->
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/upload_form.css">
+</head>
+<body>
+
+    <section class="m-5 centered-container">
+    
+        <h1 class="h1 p-0 text-center text-danger">Data Collection Tool for Expense Survey</h1>
+        
+        <!-- Form Section - Data Collection -->
+        <div class="d-flex justify-content-between bg-secondary p-3 rounded">
+            <div class="container border p-3 mx-2 rounded">
+                <h4 class="text-center text-dark text-decoration-underline mb-3">User Registration</h4><br>
+
+                <form id="surveyForm" class="form" enctype="multipart/form-data">
+
+                    <!-- First Name -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-dark h5" for="first_name">First Name:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" name="first_name" id="first_name">
+                        </div>
+                    </div><br>
+
+                    <!-- Last Name -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-dark h5" for="last_name">Last Name:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="text" name="last_name" id="last_name">
+                        </div>
+                    </div><br>
+
+                    <!-- Age -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-dark h5" for="age">Age:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="age" id="age">
+                        </div>
+                    </div><br>
+
+                    <!-- Gender -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-dark h5" for="gender">Select Gender:</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" name="gender" id="gender">
+                                <option value="Gender">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div><br>
+
+                    <!-- Total Income -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-dark h5" for="total_income">Total Income:</label>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="total_income" id="total_income">
+                        </div>
+                    </div><br>
+
+                    <h4 class="text-center text-dark text-decoration-underline mb-3">User Expenses</h4><br>
+
+                    <!-- Utilities -->
+                    <div class="form-group row">
+                        <div class="col-sm-4 d-flex align-items-center">
+                            <input type="checkbox" id="utilitiesCheckbox" onchange="toggleInput('utilitiesCheckbox', 'utilitiesInput')">
+                            <label class="col-form-label text-dark h5 ms-2" for="utilitiesCheckbox">Utilities</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="utilities" id="utilitiesInput" disabled>
+                        </div>
+                    </div><br>
+
+                    <!-- Entertainment -->
+                    <div class="form-group row">
+                        <div class="col-sm-4 d-flex align-items-center">
+                            <input type="checkbox" id="entertainmentCheckbox" onchange="toggleInput('entertainmentCheckbox', 'entertainmentInput')">
+                            <label class="col-form-label text-dark h5 ms-2" for="entertainmentCheckbox">Entertainment</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="entertainment" id="entertainmentInput" disabled>
+                        </div>
+                    </div><br>
+
+                    <!-- School Fees -->
+                    <div class="form-group row">
+                        <div class="col-sm-4 d-flex align-items-center">
+                            <input type="checkbox" id="schoolFeesCheckbox" onchange="toggleInput('schoolFeesCheckbox', 'schoolFeesInput')">
+                            <label class="col-form-label text-dark h5 ms-2" for="schoolFeesCheckbox">School Fees</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="school_fees" id="schoolFeesInput" disabled>
+                        </div>
+                    </div><br>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 d-flex align-items-center">
+                            <input type="checkbox" id="shoppingCheckbox" onchange="toggleInput('shoppingCheckbox', 'shoppingInput')">
+                            <label class="col-form-label text-dark h5 ms-2" for="shoppingCheckbox">Shopping</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="shopping" id="shoppingInput" disabled>
+                        </div>
+                    </div><br>
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 d-flex align-items-center">
+                            <input type="checkbox" id="healthcareCheckbox" onchange="toggleInput('healthcareCheckbox', 'healthcareInput')">
+                            <label class="col-form-label text-dark h5 ms-2" for="healthcareCheckbox">Healthcare</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input class="form-control" type="number" name="healthcare" id="healthcareInput" disabled>
+                        </div>
+                    </div><br>
+                    
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-lg btn-success" onclick="submitForm()">Submit</button>
+                        <input class="btn btn-lg btn-danger" title="clear entire form inputs" type="reset" value="Clear">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript to toggle inputs -->
+    <script>
+        function toggleInput(checkboxId, inputId) {
+            const checkbox = document.getElementById(checkboxId);
+            const inputField = document.getElementById(inputId);
+            inputField.disabled = !checkbox.checked;
+        }
+
+        async function submitForm() {
+        const form = document.getElementById('surveyForm');
+
+        // Create a form data object
+        const formData = new FormData(form);
+
+        // Build the JSON structure
+        const data = {
+            first_name: formData.get('first_name'),
+            last_name: formData.get('last_name'),
+            age: parseInt(formData.get('age')),
+            gender: formData.get('gender'),
+            user_id: 2,  // You can modify this to dynamically generate user_id if needed
+            total_income: parseInt(formData.get('total_income')),
+            expense: {
+                utilities: formData.get('utilities') ? parseInt(formData.get('utilities')) : 0,
+                entertainment: formData.get('entertainment') ? parseInt(formData.get('entertainment')) : 0,
+                school_fees: formData.get('school_fees') ? parseInt(formData.get('school_fees')) : 0,
+                shopping: formData.get('shopping') ? parseInt(formData.get('shopping')) : 0,
+                healthcare: formData.get('healthcare') ? parseInt(formData.get('healthcare')) : 0
+            }
+        };
+
+        try {
+            const response = await fetch('http://127.0.0.1:8001/api/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('User registered successfully');
+            } else {
+                alert('Failed to register user: ' + result.message);
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    }
+    </script>
+
+</body>
+</html>
