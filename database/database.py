@@ -12,11 +12,3 @@ db = client.survey_manager
 
 # Create the the Collection
 user_collection = db.user_demography
-
-
-
-# try:
-#     client.admin.command('ping')
-#     print("Pinged your deployment. You successfully connected to MongoDB!")
-# except Exception as e:
-#     print(e)

@@ -26,23 +26,6 @@ def create_user():
     try:
         # Extract user_data from the request JSON body
         user_data = request.get_json()
-        print(user_data)
-
-        user_data = {
-            "first_name": "Chinasa",
-            "last_name": "Okeke",
-            "age": 34,
-            "gender": "Female",
-            "user_id": 2,
-            "total_income": 40000,
-            "expense": {
-                "utilities": 30,
-                "entertainment": 50,
-                "school_fees": 60,
-                "shopping": 70,
-                "healthcare": 40
-            }
-        }
         
         if not user_data:
             return jsonify({"message": "User information was not supplied"}), HTTPStatus.BAD_REQUEST
