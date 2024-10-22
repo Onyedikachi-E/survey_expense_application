@@ -48,4 +48,13 @@ The final project is classfied in two catgories:
 ![alt text](image.png)
 
 - The graph of gender distribution across spending categories
+
 ![alt text](image-2.png)
+
+- The renderv page
+
+![alt text](image-3.png)
+
+- The MongoDB page
+
+![alt text](image-4.png)
